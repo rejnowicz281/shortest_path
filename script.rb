@@ -4,7 +4,7 @@ class Node
     def initialize(id)
         @id = id 
         @possible_moves = []
-        @prev = prev
+        @prev = nil
     end 
 end 
 
