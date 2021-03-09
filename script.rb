@@ -32,6 +32,17 @@ class Board
         end     
     end 
 
+    def show_board(path = nil)
+        nodes.each do |node|
+            if path != nil && path.include?(node.id) 
+                print "\e[33m[#{node.id[0]}**#{node.id[1]}] \e[0m"
+            else
+                print "#{node.id} "
+            end  
+            puts if node.id[1] == 7
+        end 
+    end 
+
     def get_node(id)
         nodes.each { |node| return node if node.id == id }
     end
@@ -81,5 +92,6 @@ b = Board.new(8)
 
 path = b.shortest_path([3,3], [4,3])
 
+b.show_board(path)
 p path
 p "You made it in #{path.length-1} moves"
